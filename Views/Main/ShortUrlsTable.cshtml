@@ -1,0 +1,54 @@
+﻿@model IEnumerable<UserModel>
+
+@{
+    ViewData["Title"] = "ShortUrlsTable";
+}
+<div class="container p-3">
+    <div class="row pt-4">
+        <div class="col-6">
+            <h2 class="text-primary">Url List</h2>
+        </div>
+    </div>
+    <br /><br />
+<table class="table table-bordered table-striped" style="width:100%">
+    <thead>
+        <tr>
+            <th>
+                Url
+            </th>
+            <th>
+                Short Url
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach(var obj in Model)
+        {
+                @foreach (var objecT in obj.Urls) {
+                       <tr>
+                        <td width="50%">
+                            @objecT.Url
+                        </td>
+                        <td width="30%">
+                            @objecT.ShortUrl
+                        </td>
+                        <td>
+                }
+                    <div class="w-75 btn-group" role="group">
+                        <a asp-controller="Main" asp-action="ShortUrlInfo" asp-route-id="@obj.Id"
+                        class="btn btn-primary mx-2"> <i class="bi bi-pencil-square"></i> Info</a>
+					</div>
+				</td>
+			</tr>
+        }
+    </tbody>
+
+</table>
+</div>
+  <div class="col-6 text-end">
+            <a asp-controller="Main" asp-action="Add" class="btn btn-primary">
+               <i class="bi bi-plus-circle"></i> &nbsp; Add Url
+			</a>
+</div>
+
